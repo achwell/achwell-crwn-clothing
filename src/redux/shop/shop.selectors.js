@@ -18,3 +18,8 @@ export const selectCollection = memoize(collectionUrlParam => createSelector(
     collections => collections ? collections[collectionUrlParam] : null
     )
 );
+
+export const selectIsCollectionLoaded = createSelector(
+    [selectShop],
+    shop => !!shop.collections
+);
