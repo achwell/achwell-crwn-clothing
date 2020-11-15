@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {fetchCollectionsStart} from '../../redux/shop/shop.actions';
 
 import CollectionPageContainer from '../collection/collection.container';
-import CollectionsOverviewContainer from "../../components/collections-overview/collections-overview.container";
+import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container';
 
 const ShopPage = ({fetchCollectionsStart, match}) => {
 
@@ -18,9 +18,8 @@ const ShopPage = ({fetchCollectionsStart, match}) => {
             <Route exact path={`${match.path}`} component={CollectionsOverviewContainer}/>
             <Route path={`${match.path}/:collectionId`} component={CollectionPageContainer}/>
         </div>
-        );
-
-}
+    );
+};
 
 const mapDispatchToProps = dispatch => ({
     fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
