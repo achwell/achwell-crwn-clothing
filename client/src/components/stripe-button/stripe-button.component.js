@@ -1,8 +1,6 @@
 import React from 'react';
-
-import axios from 'axios';
-
 import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
 
 const StripeCheckoutButton = ({price}) => {
     const currency = 'NOK';
@@ -19,29 +17,29 @@ const StripeCheckoutButton = ({price}) => {
                 token: token
             }
         }).then(response => {
-            alert('Payment successfull');
+            alert('succesful payment');
         }).catch(error => {
-            console.error('Payment error: ' + JSON.parse(error));
-            alert('Payment error');
+            console.error('Payment Error: ', JSON.parse(error));
+            alert('There was an issue with your payment! Please make sure you use the provided credit card.');
         });
-    }
+    };
 
     return (
         <StripeCheckout
-            label="Pay Now"
-            name="CRWN Clothing Ltd."
+            label='Pay Now'
+            name='CRWN Clothing Ltd.'
             billingAddress
             shippingAddress
             image='https://sendeyo.com/up/d/f3eb2117da'
-            description={`Yout total is ${currency} ${price}`}
+            description={`Your total is ${currency} ${price}`}
             amount={priceForStripe}
-            panelLabel="Pay Now"
+            panelLabel='Pay Now'
             token={onToken}
             stripeKey={publishableKey}
             currency={currency}
 
         />
     );
-}
+};
 
 export default StripeCheckoutButton;

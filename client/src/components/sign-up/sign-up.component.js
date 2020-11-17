@@ -18,8 +18,8 @@ const SignUp = ({signUpStart}) => {
 
     const {displayName, email, password, confirmPassword} = userCredentials;
 
-    const handleSubmit = async e => {
-        e.preventDefault();
+    const handleSubmit = async event => {
+        event.preventDefault();
         if (password !== confirmPassword) {
             alert("Passwords don't match");
             return;
