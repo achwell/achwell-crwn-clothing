@@ -3,13 +3,7 @@ import React from 'react';
 import {ErrorImageContainer, ErrorImageOverlay, ErrorImageText} from './error-boundary.styles';
 
 class ErrorBoundary extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {
-            hasErrored: false
-        };
-    }
+    state = {hasErrored: false};
 
     static getDerivedStateFromError(error) {
         // process the error

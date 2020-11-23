@@ -6,7 +6,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import {emailSignInStart, googleSignInStart} from '../../redux/user/user.actions';
 
-import './sign-in.styles.scss';
+import {ButtonsBarContainer, SignInContainer, SignInTitle} from './sign-in.styles';
 
 const SignIn = ({emailSignInStart, googleSignInStart}) => {
 
@@ -25,18 +25,18 @@ const SignIn = ({emailSignInStart, googleSignInStart}) => {
     };
 
     return (
-            <div className="sign-in">
-                <h2 className="title">I alredy have an account</h2>
-                <span>Sign in with your email and password</span>
-                <form onSubmit={handleSubmit} className="sign-in-form">
-                    <FormInput id="email" name="email" type="email" label="Email" value={email} handleChange={handleChange} required/>
-                    <FormInput id="password" name="password" type="password" label="Password" value={password} handleChange={handleChange} required/>
-                    <div className="buttons">
-                        <CustomButton type="submit"> Sign In </CustomButton>
-                        <CustomButton type="button" isGoogleSignin onClick={googleSignInStart}> Sign In With Google </CustomButton>
-                    </div>
-                </form>
-            </div>
+        <SignInContainer>
+            <SignInTitle>I already have an account</SignInTitle>
+            <span>Sign in with your email and password</span>
+            <form onSubmit={handleSubmit}>
+                <FormInput id="email" name='email' type='email' handleChange={handleChange} value={email} label='email' required/>
+                <FormInput id="password" name='password' type='password' value={password} handleChange={handleChange} label='password' required/>
+                <ButtonsBarContainer>
+                    <CustomButton type='submit'> Sign in </CustomButton>
+                    <CustomButton type='button' onClick={googleSignInStart} isGoogleSignIn> Sign in with Google </CustomButton>
+                </ButtonsBarContainer>
+            </form>
+        </SignInContainer>
     );
 };
 

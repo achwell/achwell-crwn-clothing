@@ -6,7 +6,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import {signUpStart} from '../../redux/user/user.actions';
 
-import './sign-up.styles.scss';
+import {SignUpContainer, SignUpTitle} from './sign-up.styles';
 
 const SignUp = ({signUpStart}) => {
     const [userCredentials, setUserCredentials] = useState({
@@ -18,14 +18,15 @@ const SignUp = ({signUpStart}) => {
 
     const {displayName, email, password, confirmPassword} = userCredentials;
 
-    const handleSubmit = async event => {
-        event.preventDefault();
-        if (password !== confirmPassword) {
-            alert("Passwords don't match");
-            return;
-        }
-        signUpStart({displayName, email, password});
-    };
+  const handleSubmit = async event => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      alert("passwords don't match");
+      return;
+    }
+
+    signUpStart({ displayName, email, password });
+  };
 
     const handleChange = event => {
         const {name, value} = event.target;
@@ -33,8 +34,8 @@ const SignUp = ({signUpStart}) => {
     };
 
     return (
-        <div className="sign-up">
-            <h2 className="title">I do not have an account</h2>
+        <SignUpContainer>
+            <SignUpTitle>I do not have an account</SignUpTitle>
             <span>Sign up with your email and password</span>
             <form className='sign-up-form' onSubmit={handleSubmit}>
                 <FormInput type='text' name='displayName' value={displayName} onChange={handleChange} label='Display Name' required/>
@@ -43,7 +44,7 @@ const SignUp = ({signUpStart}) => {
                 <FormInput type='password' name='confirmPassword' value={confirmPassword} onChange={handleChange} label='Confirm Password' required/>
                 <CustomButton type='submit'>SIGN UP</CustomButton>
             </form>
-        </div>
+        </SignUpContainer>
     );
 };
 
